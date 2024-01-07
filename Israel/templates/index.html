@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nuclear Weapon Prediction</title>
+</head>
+<body>
+  <h1>Nuclear Weapon Prediction</h1>
+
+  <form action="/" method="post">
+    <label for="country">Select a country:</label>
+    <select id="country" name="country">
+      <option value="US">US</option>
+      <option value="RU">RU</option>
+      <option value="CN">CN</option>
+      <option value="FR">FR</option>
+      <option value="UK">UK</option>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Display predictions or information -->
+  {% if selected_model %}
+    <h2>Predictions for {{ selected_model }}</h2>
+    <!-- Add your prediction results or model information here -->
+    <!-- For example: -->
+    <p>This is where your predictions or model information will be displayed based on the selected model.</p>
+  {% endif %}
+
+</body>
+</html>
