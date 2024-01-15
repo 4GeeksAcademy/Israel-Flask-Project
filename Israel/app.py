@@ -12,7 +12,7 @@ model_files = {
     "UK": "UKnukepredictmodel.sav"
 }
 
-loaded_models = {country: pickle.load(open(f"/Users/israeldellinger/Programming/Israel-Flask-Project/Israel/{filename}", 'rb'))
+loaded_models = {country: pickle.load(open(f"/Israel-Flask-Project-Test/Israel/{filename}", 'rb'))
                  for country, filename in model_files.items()}
 
 @app.route("/", methods=["GET", "POST"])
