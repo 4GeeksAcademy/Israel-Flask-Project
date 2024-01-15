@@ -21,9 +21,11 @@
   <!-- Display predictions or information -->
   {% if selected_model %}
     <h2>Predictions for {{ selected_model }}</h2>
+    <!-- Display the selected country's image -->
+    <img src="{{ url_for('get_image', country_code=selected_model) }}" alt="Country Image">
     <!-- Add your prediction results or model information here -->
     <!-- For example: -->
-    <p>This is where your predictions or model information will be displayed based on the selected model.</p>
+    <p></p>
   {% endif %}
 
 </body>
