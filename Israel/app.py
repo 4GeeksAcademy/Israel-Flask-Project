@@ -1,6 +1,6 @@
+from flask import Flask, request, render_template, send_from_directory
 import pickle
-from flask import Flask, request, render_template
-
+import os
 
 app = Flask(__name__)
 
@@ -15,16 +15,20 @@ model_files = {
 loaded_models = {country: pickle.load(open(f"/Users/israeldellinger/Programming/Israel-Flask-Project/Israel/{filename}", 'rb'))
                  for country, filename in model_files.items()}
 
-@app.route("/", methods = ["GET", "POST"])
-
+@app.route("/", methods=["GET", "POST"])
 def index():
-    selected_model = None
+    country_select = None  # Default value if the form is not submitted
 
     if request.method == "POST":
-        country_select = request.form["country"]  # Get selected country code from form
-        selected_model = loaded_models.get(country_select)  # Retrieve the corresponding model
+        country_select = request.form["country"]
 
-    return render_template('index.html', selected_model=selected_model)
+    return render_template('index.html', selected_model=country_select)
+
+@app.route('/Israel/images/<country_code>output.png')
+def get_image(country_code):
+    image_path = os.path.join(app.root_path, 'images', f'{country_code}output.png')
+    return send_from_directory(os.path.dirname(image_path), os.path.basename(image_path))
+
 
 if __name__ == "__main__":
     app.run(debug=False)
